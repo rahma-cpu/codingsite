@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🎉 Birthday Surprise 🎉</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive;
+  background: linear-gradient(135deg, #ffd1dc, #ffe4ec);
+  overflow: hidden;
+  text-align: center;
+}
+
+.container {
+  display: none;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation: fadeIn 1s ease;
+}
+
+.active { display: flex; }
+
+h1 {
+  font-size: 2.5rem;
+  animation: bounce 2s infinite;
+}
+
+p {
+  font-size: 1.3rem;
+  max-width: 600px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: #6c63ff;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.heart {
+  font-size: 3rem;
+  animation: float 4s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: red;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to { transform: translateY(100vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div id="page1" class="container active">
+  <h1>Ready for your surprise? 🎁</h1>
+  <button onclick="nextPage(1)">Open it</button>
+</div>
+
+<div id="page2" class="container">
+  <p>You keep leveling up every year... and somehow still manage to be adorable 😌</p>
+  <button onclick="nextPage(2)">Next</button>
+</div>
+
+<div id="page3" class="container">
+  <p>I love how you make life fun, how you make me laugh even when i don't want to and how you somehow manage to put up with all my weirdness🦋💕</p>
+  <button onclick="nextPage(3)">Next</button>
+</div>
+
+<div id="page4" class="container">
+  <p>everyday is all about you, but this one comes with a reminder that you're are my favorit for all the time🌻❤️</p>
+  <button onclick="nextPage(4)">Next</button>
+</div>
+
+<div id="page5" class="container">
+  <p>I hope this year brings you endless happiness💛,love, stupid little joys and a mountains of cake🎂</p>
+  <button onclick="nextPage(5)">Next</button>
+</div>
+
+<div id="page6" class="container">
+  <h1>One more thing... ❤️</h1>
+  <p>I was going to get you the perfect gift...</p>
+  <p>Something cute, something special...</p>
+  <p>But then I realized...</p>
+  <p><strong>The best thing I can give you is how much you mean to me 💕</strong></p>
+  <p>You make everything feel softer, happier, and a little more magical ✨</p>
+  <p>So yeah… you’re kind of my favorite person 🥰❤️</p>
+  <button onclick="nextPage(6)">Final surprise</button>
+</div>
+
+<div id="page7" class="container">
+  <h1>HAPPY BIRTHDAY 🎉</h1>
+  <p>You deserve all the happiness in the world ✨</p>
+</div>
+
+<script>
+function nextPage(current) {
+  document.getElementById('page' + current).classList.remove('active');
+  document.getElementById('page' + (current + 1)).classList.add('active');
+
+  if(current === 6) createConfetti();
+}
+
+function createConfetti() {
+  for(let i=0;i<100;i++){
+    let conf = document.createElement('div');
+    conf.className = 'confetti';
+    conf.style.left = Math.random()*100+'vw';
+    conf.style.animationDuration = (Math.random()*3+2)+'s';
+    document.body.appendChild(conf);
+  }
+}
+</script>
+
+</body>
+</html>
